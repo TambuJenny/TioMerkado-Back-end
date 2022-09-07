@@ -8,7 +8,8 @@ namespace DomainService.Interface.Product
     public interface PCInterface
     {
         Task Create(PCRequest body);
-        Task<List<PcResponse>> GetAll();
+        List<PcResponse> GetAllAvailable();
+        List<PcResponse> GetAll();
         Task<PcResponse> GetById(Guid id);
     }
 }
