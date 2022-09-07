@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace sebastiao.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20220906172508_criarTabelaUsuario")]
-    partial class criarTabelaUsuario
+    [Migration("20220907012952_CreateUsers")]
+    partial class CreateUsers
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,27 +21,39 @@ namespace sebastiao.Migrations
                 .HasAnnotation("ProductVersion", "6.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("DomainService.Models.UsuarioModel", b =>
+            modelBuilder.Entity("DomainService.Models.UserModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<DateTime>("DataCriacao")
+                    b.Property<DateTime>("DateCreate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("Idade")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("DateUpdate")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Nome")
+                    b.Property<string>("Email")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("Sexo")
+                    b.Property<string>("FirstName")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Role")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,6 +1,4 @@
-using AplicationCore.Services;
 using AutoMapper;
-using DomainService.Interfaces;
 
 namespace AplicationCore.Helpers
 {
@@ -9,7 +7,6 @@ namespace AplicationCore.Helpers
         public static void RegisterBusinesses(IServiceCollection services)
         {
            
-           services.AddScoped<IUsuarios,UsuarioServices>();
 
             //AutoMapper
             var mapperConfig = new MapperConfiguration(

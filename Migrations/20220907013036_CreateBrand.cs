@@ -5,27 +5,23 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace sebastiao.Migrations
 {
-    public partial class criarTabelaUsuario : Migration
+    public partial class CreateBrand : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterDatabase()
-                .Annotation("MySql:CharSet", "utf8mb4");
-
             migrationBuilder.CreateTable(
-                name: "Usuarios",
+                name: "Brands",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    Nome = table.Column<string>(type: "longtext", nullable: true)
+                    BrandName = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Sexo = table.Column<int>(type: "int", nullable: false),
-                    Idade = table.Column<int>(type: "int", nullable: false),
-                    DataCriacao = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    CreatedDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Usuarios", x => x.Id);
+                    table.PrimaryKey("PK_Brands", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
         }
@@ -33,7 +29,7 @@ namespace sebastiao.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Usuarios");
+                name: "Brands");
         }
     }
 }

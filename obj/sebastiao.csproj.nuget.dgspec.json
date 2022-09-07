@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MOSES\\Documents\\Jenny\\sebastiao\\sebastiao.csproj": {}
+    "C:\\Users\\djenn\\3D Objects\\TioMerKadoAPP\\back-end\\TioMerkado-Back-end\\sebastiao.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MOSES\\Documents\\Jenny\\sebastiao\\sebastiao.csproj": {
+    "C:\\Users\\djenn\\3D Objects\\TioMerKadoAPP\\back-end\\TioMerkado-Back-end\\sebastiao.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MOSES\\Documents\\Jenny\\sebastiao\\sebastiao.csproj",
+        "projectUniqueName": "C:\\Users\\djenn\\3D Objects\\TioMerKadoAPP\\back-end\\TioMerkado-Back-end\\sebastiao.csproj",
         "projectName": "sebastiao",
-        "projectPath": "C:\\Users\\MOSES\\Documents\\Jenny\\sebastiao\\sebastiao.csproj",
-        "packagesPath": "C:\\Users\\MOSES\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MOSES\\Documents\\Jenny\\sebastiao\\obj\\",
+        "projectPath": "C:\\Users\\djenn\\3D Objects\\TioMerKadoAPP\\back-end\\TioMerkado-Back-end\\sebastiao.csproj",
+        "packagesPath": "C:\\Users\\djenn\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\djenn\\3D Objects\\TioMerKadoAPP\\back-end\\TioMerkado-Back-end\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\MOSES\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\djenn\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"

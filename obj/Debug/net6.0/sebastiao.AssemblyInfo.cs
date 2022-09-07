@@ -18,5 +18,5 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyTitleAttribute("sebastiao")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
-// Généré par la classe MSBuild WriteCodeFragment.
+// Gerado pela classe WriteCodeFragment do MSBuild.
 
