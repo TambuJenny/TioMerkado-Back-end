@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace sebastiao.Migrations
 {
-    public partial class CreatePCs : Migration
+    public partial class createPC : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,7 +29,7 @@ namespace sebastiao.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     FirtPrice = table.Column<double>(type: "double", nullable: false),
                     LastPrice = table.Column<double>(type: "double", nullable: false),
-                    UserIdId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
                     CreatedDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
@@ -42,8 +42,8 @@ namespace sebastiao.Migrations
                         principalTable: "Brands",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Pcs_Users_UserIdId",
-                        column: x => x.UserIdId,
+                        name: "FK_Pcs_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id");
                 })
@@ -55,9 +55,9 @@ namespace sebastiao.Migrations
                 column: "BrandId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pcs_UserIdId",
+                name: "IX_Pcs_UserId",
                 table: "Pcs",
-                column: "UserIdId");
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

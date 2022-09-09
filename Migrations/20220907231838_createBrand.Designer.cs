@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace sebastiao.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20220907013036_CreateBrand")]
-    partial class CreateBrand
+    [Migration("20220907231838_createBrand")]
+    partial class createBrand
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

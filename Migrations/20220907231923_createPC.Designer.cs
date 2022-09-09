@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace sebastiao.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20220907013207_CreatePCs")]
-    partial class CreatePCs
+    [Migration("20220907231923_createPC")]
+    partial class createPC
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -86,14 +86,14 @@ namespace sebastiao.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("UserIdId")
+                    b.Property<Guid?>("UserId")
                         .HasColumnType("char(36)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BrandId");
 
-                    b.HasIndex("UserIdId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Pcs");
                 });
@@ -139,13 +139,13 @@ namespace sebastiao.Migrations
                         .WithMany()
                         .HasForeignKey("BrandId");
 
-                    b.HasOne("DomainService.Models.UserModel", "UserId")
+                    b.HasOne("DomainService.Models.UserModel", "User")
                         .WithMany()
-                        .HasForeignKey("UserIdId");
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Brand");
 
-                    b.Navigation("UserId");
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

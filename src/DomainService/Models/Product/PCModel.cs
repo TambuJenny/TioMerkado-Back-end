@@ -18,7 +18,7 @@ namespace DomainService.Models.Product
         public string Description { get; set; }
         public double FirtPrice { get; set; }
         public double LastPrice { get; set; }
-        public UserModel UserId { get; set; }
+        public UserModel User { get; set; }
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public DateTime ModifiedDate { get; set; } = DateTime.Now;

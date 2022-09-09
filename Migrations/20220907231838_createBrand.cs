@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace sebastiao.Migrations
 {
-    public partial class CreateBrand : Migration
+    public partial class createBrand : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
