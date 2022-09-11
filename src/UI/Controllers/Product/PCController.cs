@@ -69,7 +69,7 @@ namespace UI.Controllers.Product
             }
         }
 
-        [HttpGet("getAllAvailable")]
+        [HttpGet("[action]")]
         public async Task<ActionResult> GetAllAvailable()
         {
             try
@@ -91,7 +91,7 @@ namespace UI.Controllers.Product
             }
         }
 
-        [HttpGet]
+        [HttpGet("[action]")]
         public async Task<ActionResult> GetAll()
         {
             try
@@ -113,7 +113,7 @@ namespace UI.Controllers.Product
             }
         }
 
-        [HttpGet("{idPc}")]
+        [HttpGet("[action]/{idPc}")]
         public async Task<ActionResult> GetById([FromRoute] Guid idPc)
         {
             try

@@ -63,7 +63,10 @@ namespace ApplicationCore.Services
 
         public async Task<List<PcResponse>> GetAllAvailable()
         {
-            var getAllPc = await _dbContext.Pcs.Where(x => x.Status == StatusProduct.available).ToListAsync();
+            var getAllPc = await _dbContext.Pcs.Include(x => x.User)
+                .Include(x => x.Brand)
+                .Where(x => x.Status == StatusProduct.available)
+                .ToListAsync();
 
             var AllpcResponse = new List<PcResponse>();
             var pcResponse = new PcResponse();
@@ -91,7 +94,8 @@ namespace ApplicationCore.Services
 
         public async Task<List<PcResponse>> GetAll()
         {
-            var getAllPc = await _dbContext.Pcs.ToListAsync();
+            var getAllPc = await _dbContext.Pcs.Include(x => x.User)
+                .Include(x => x.Brand).ToListAsync();
 
             var AllpcResponse = new List<PcResponse>();
             var pcResponse = new PcResponse();
@@ -119,7 +123,11 @@ namespace ApplicationCore.Services
 
         public async Task<PcResponse> GetById(Guid id)
         {
-            var existeIdPc = await _dbContext.Pcs.FindAsync(id);
+            var existeIdPc = await _dbContext.Pcs
+                .Include(x => x.User)
+                .Include(x => x.Brand)
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
             if (existeIdPc == null)
                 throw new NotImplementedException("Computador não existe");
 
