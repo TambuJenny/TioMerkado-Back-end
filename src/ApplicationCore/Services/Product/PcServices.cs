@@ -2,6 +2,7 @@ using AutoMapper;
 using DomaineService.Models.Request.Product;
 using DomaineService.Models.Response.Product;
 using DomainService.Interface.Product;
+using DomainService.Models;
 using DomainService.Models.Product;
 using Infrastruture.Context;
 using Microsoft.EntityFrameworkCore;
@@ -63,7 +64,8 @@ namespace ApplicationCore.Services
 
         public async Task<List<PcResponse>> GetAllAvailable()
         {
-            var getAllPc = await _dbContext.Pcs.Include(x => x.User)
+            var getAllPc = await _dbContext.Pcs
+                .Include(x => x.User)
                 .Include(x => x.Brand)
                 .Where(x => x.Status == StatusProduct.available)
                 .ToListAsync();
@@ -74,17 +76,26 @@ namespace ApplicationCore.Services
             foreach (var item in getAllPc)
             {
                 pcResponse.Id = item.Id;
-                pcResponse.BrandId = item.Brand.Id;
-                pcResponse.ProductName = item.Brand.BrandName;
+                pcResponse.Brand = new BrandModel
+                {
+                    Id = item.Brand.Id,
+                    BrandName = item.Brand.BrandName
+                };
+                pcResponse.ProductName = item.ProductName;
                 pcResponse.Description = item.Description;
                 pcResponse.ProcessorSpeed = item.ProcessorSpeed;
                 pcResponse.HardDisk = item.HardDisk;
                 pcResponse.FirtPrice = item.FirtPrice;
                 pcResponse.LastPrice = item.LastPrice;
-                pcResponse.Description = item.Failure;
+                pcResponse.Failure = item.Failure;
                 pcResponse.Ram = item.Ram;
                 pcResponse.Images = item.Images;
-                pcResponse.UserId = item.User.Id;
+                pcResponse.User = new UserModel
+                {
+                    Id = item.User.Id,
+                    FirstName = item.User.FirstName,
+                    LastName = item.User.LastName
+                };
 
                 AllpcResponse.Add(pcResponse);
             }
@@ -94,28 +105,42 @@ namespace ApplicationCore.Services
 
         public async Task<List<PcResponse>> GetAll()
         {
-            var getAllPc = await _dbContext.Pcs.Include(x => x.User)
-                .Include(x => x.Brand).ToListAsync();
+            var getAllPc = await _dbContext.Pcs
+                .Include(x => x.User)
+                .Include(x => x.Brand)
+                .ToListAsync();
 
             var AllpcResponse = new List<PcResponse>();
             var pcResponse = new PcResponse();
 
             foreach (var item in getAllPc)
             {
-                pcResponse.Id = item.Id;
-                pcResponse.BrandId = item.Brand.Id;
-                pcResponse.ProductName = item.Brand.BrandName;
-                pcResponse.Description = item.Description;
-                pcResponse.ProcessorSpeed = item.ProcessorSpeed;
-                pcResponse.HardDisk = item.HardDisk;
-                pcResponse.FirtPrice = item.FirtPrice;
-                pcResponse.LastPrice = item.LastPrice;
-                pcResponse.Description = item.Failure;
-                pcResponse.Ram = item.Ram;
-                pcResponse.Images = item.Images;
-                pcResponse.UserId = item.User.Id;
-
-                AllpcResponse.Add(pcResponse);
+                AllpcResponse.Add(
+                    new PcResponse
+                    {
+                        Brand = new BrandModel
+                        {
+                            Id = item.Brand.Id,
+                            BrandName = item.Brand.BrandName
+                        },
+                        Id = item.Id,
+                        ProductName = item.ProductName,
+                        Description = item.Description,
+                        ProcessorSpeed = item.ProcessorSpeed,
+                        HardDisk = item.HardDisk,
+                        FirtPrice = item.FirtPrice,
+                        LastPrice = item.LastPrice,
+                        Failure = item.Failure,
+                        Ram = item.Ram,
+                        Images = item.Images,
+                        User = new UserModel
+                        {
+                            Id = item.User.Id,
+                            FirstName = item.User.FirstName,
+                            LastName = item.User.LastName
+                        }
+                    }
+                );
             }
 
             return AllpcResponse;
@@ -134,17 +159,26 @@ namespace ApplicationCore.Services
             var pcResponse = new PcResponse();
 
             pcResponse.Id = existeIdPc.Id;
-            pcResponse.BrandId = existeIdPc.Brand.Id;
+            pcResponse.Brand = new BrandModel
+            {
+                Id = existeIdPc.Brand.Id,
+                BrandName = existeIdPc.Brand.BrandName
+            };
             pcResponse.ProductName = existeIdPc.ProductName;
             pcResponse.Description = existeIdPc.Description;
             pcResponse.ProcessorSpeed = existeIdPc.ProcessorSpeed;
             pcResponse.HardDisk = existeIdPc.HardDisk;
             pcResponse.FirtPrice = existeIdPc.FirtPrice;
             pcResponse.LastPrice = existeIdPc.LastPrice;
-            pcResponse.Description = existeIdPc.Failure;
+            pcResponse.Failure = existeIdPc.Failure;
             pcResponse.Ram = existeIdPc.Ram;
             pcResponse.Images = existeIdPc.Images;
-            pcResponse.UserId = existeIdPc.User.Id;
+            pcResponse.User = new UserModel
+            {
+                Id = existeIdPc.User.Id,
+                FirstName = existeIdPc.User.FirstName,
+                LastName = existeIdPc.User.LastName
+            };
 
             return pcResponse;
         }
@@ -173,7 +207,7 @@ namespace ApplicationCore.Services
 
             existePc.User = await (
                 from u in _dbContext.Users
-                where u.Id == body.UserId
+                where u.Id == body.User.Id
                 select u
             ).SingleOrDefaultAsync();
 
@@ -182,7 +216,7 @@ namespace ApplicationCore.Services
 
             existePc.Brand = await (
                 from u in _dbContext.Brands
-                where u.Id == body.BrandId
+                where u.Id == body.Brand.Id
                 select u
             ).SingleOrDefaultAsync();
 
