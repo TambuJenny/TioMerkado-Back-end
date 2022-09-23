@@ -6,7 +6,7 @@ namespace DomainService.Interface.Product
     public interface BrandInterface
     {
         Task Create(BrandRequest body);
-        List<BrandResponse> GetAll();
-        Task<BrandResponse> GetById(Guid id);
+        Task<IList<BrandResponse>> GetAll();
+        Task <BrandResponse> GetById(Guid id);
     }
 }

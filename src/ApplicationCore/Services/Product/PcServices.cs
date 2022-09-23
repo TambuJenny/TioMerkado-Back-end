@@ -156,28 +156,29 @@ namespace ApplicationCore.Services
             if (existeIdPc == null)
                 throw new NotImplementedException("Computador não existe");
 
-            var pcResponse = new PcResponse();
-
-            pcResponse.Id = existeIdPc.Id;
-            pcResponse.Brand = new BrandModel
+            var pcResponse = new PcResponse
             {
-                Id = existeIdPc.Brand.Id,
-                BrandName = existeIdPc.Brand.BrandName
-            };
-            pcResponse.ProductName = existeIdPc.ProductName;
-            pcResponse.Description = existeIdPc.Description;
-            pcResponse.ProcessorSpeed = existeIdPc.ProcessorSpeed;
-            pcResponse.HardDisk = existeIdPc.HardDisk;
-            pcResponse.FirtPrice = existeIdPc.FirtPrice;
-            pcResponse.LastPrice = existeIdPc.LastPrice;
-            pcResponse.Failure = existeIdPc.Failure;
-            pcResponse.Ram = existeIdPc.Ram;
-            pcResponse.Images = existeIdPc.Images;
-            pcResponse.User = new UserModel
-            {
-                Id = existeIdPc.User.Id,
-                FirstName = existeIdPc.User.FirstName,
-                LastName = existeIdPc.User.LastName
+                Id = existeIdPc.Id,
+                Brand = new BrandModel
+                {
+                    Id = existeIdPc.Brand.Id,
+                    BrandName = existeIdPc.Brand.BrandName,
+                },
+                ProductName = existeIdPc.ProductName,
+                Description = existeIdPc.Description,
+                ProcessorSpeed = existeIdPc.ProcessorSpeed,
+                HardDisk = existeIdPc.HardDisk,
+                FirtPrice = existeIdPc.FirtPrice,
+                LastPrice = existeIdPc.LastPrice,
+                Failure = existeIdPc.Failure,
+                Ram = existeIdPc.Ram,
+                Images = existeIdPc.Images,
+                User = new UserModel
+                {
+                    Id = existeIdPc.User.Id,
+                    FirstName = existeIdPc.User.FirstName,
+                    LastName = existeIdPc.User.LastName,
+                }
             };
 
             return pcResponse;

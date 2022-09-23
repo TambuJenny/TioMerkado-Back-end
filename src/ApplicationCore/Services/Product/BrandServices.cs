@@ -2,7 +2,9 @@ using AutoMapper;
 using DomaineService.Models.Request.Product;
 using DomaineService.Models.Response.Product;
 using DomainService.Interface.Product;
+using DomainService.Models.Product;
 using Infrastruture.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApplicationCore.Services.Product
 {
@@ -12,28 +14,42 @@ namespace ApplicationCore.Services.Product
 
         private readonly IMapper _mapper;
 
-        public BrandServices(DataBaseContext dbContext,IMapper mapper )
+        public BrandServices(DataBaseContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        public Task Create(BrandRequest body)
+
+        public async Task Create(BrandRequest body)
         {
-            throw new NotImplementedException();
+            var existeBrand = await _dbContext.Brands.Where(x => x.BrandName == body.BrandName).FirstOrDefaultAsync();
+
+            if(existeBrand == null)
+                throw new NotImplementedException("A marca já existe");
+
+            existeBrand = new BrandModel{
+                    BrandName = body.BrandName,
+            };
+            
+            await _dbContext.Brands.AddAsync(existeBrand);
+            await _dbContext.SaveChangesAsync();    
         }
 
-        public List<BrandResponse> GetAll()
+        public async Task<IList<BrandResponse>> GetAll()
         {
-            /*var getAllBrands =  _dbContext.Brands.ToList();
+            var getAllBrands =  await _dbContext.Brands.ToListAsync();
 
-            return _mapper.Map<List<BrandResponse>>(getAllBrands);*/
-            throw new NotImplementedException();
-           
+            return _mapper.Map<List<BrandResponse>>(getAllBrands);
         }
 
-        public Task<BrandResponse> GetById(Guid id)
+        public async Task<BrandResponse> GetById(Guid id)
         {
-            throw new NotImplementedException();
+           var existeBrand = await _dbContext.Brands.Where(x => x.Id == id).FirstOrDefaultAsync();
+
+            if(existeBrand == null)
+                throw new NotImplementedException("A marca já existe");
+
+            return _mapper.Map<BrandResponse>(existeBrand);
         }
     }
 }
