@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace UI.Controllers.Product
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/product/[controller]")]
     public class PCController : ControllerBase
     {
         private readonly PCInterface _pcInterface;

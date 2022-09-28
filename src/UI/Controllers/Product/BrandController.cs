@@ -59,5 +59,25 @@ namespace Controllers.Product
                 throw;
             }
         }
+
+        [HttpGet("[action]")]
+        public async Task<ActionResult>GetAll()
+        {
+            try
+            {
+                var response = await _brandInteface.GetAll();
+                return Ok(response);
+            }
+            catch (NotImplementedException errorCreateBrand)
+            {
+                switch (errorCreateBrand.Message)
+                {
+                
+                    default:
+                        return BadRequest(errorCreateBrand.Message);
+                }
+                throw;
+            }
+        }
     }
 }
