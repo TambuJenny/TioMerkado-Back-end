@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApplicationCore.Services.Product
 {
+
     public class BrandServices : BrandInterface
     {
         private DataBaseContext _dbContext;
@@ -24,7 +25,7 @@ namespace ApplicationCore.Services.Product
         {
             var existeBrand = await _dbContext.Brands.Where(x => x.BrandName == body.BrandName).FirstOrDefaultAsync();
 
-            if(existeBrand == null)
+            if(existeBrand != null)
                 throw new NotImplementedException("A marca já existe");
 
             existeBrand = new BrandModel{
@@ -47,7 +48,7 @@ namespace ApplicationCore.Services.Product
            var existeBrand = await _dbContext.Brands.Where(x => x.Id == id).FirstOrDefaultAsync();
 
             if(existeBrand == null)
-                throw new NotImplementedException("A marca já existe");
+                throw new NotImplementedException("A marca não existe");
 
             return _mapper.Map<BrandResponse>(existeBrand);
         }
