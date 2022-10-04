@@ -9,6 +9,7 @@ namespace DomainService.Models.Request
           public string Email {set;get;}
           public string Password {set;get;}
           public string PhoneNumber {set;get;}
+          public string ImageURL { set; get; }
           public Roles Role {set;get;}
     }
  }
