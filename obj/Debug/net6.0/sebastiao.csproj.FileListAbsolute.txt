@@ -110,3 +110,10 @@ C:\Users\djenn\3D Objects\TioMerKadoAPP\back-end\TioMerkado-Back-end\obj\Debug\n
 C:\Users\djenn\3D Objects\TioMerKadoAPP\back-end\TioMerkado-Back-end\obj\Debug\net6.0\scopedcss\bundle\sebastiao.styles.css
 C:\Users\djenn\3D Objects\TioMerKadoAPP\back-end\TioMerkado-Back-end\obj\Debug\net6.0\sebastiao.csproj.CopyComplete
 C:\Users\djenn\3D Objects\TioMerKadoAPP\back-end\TioMerkado-Back-end\obj\Debug\net6.0\sebastiao.genruntimeconfig.cache
+C:\Users\djenn\3D Objects\TioMerKadoAPP\back-end\TioMerkado-Back-end\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\djenn\3D Objects\TioMerKadoAPP\back-end\TioMerkado-Back-end\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\djenn\3D Objects\TioMerKadoAPP\back-end\TioMerkado-Back-end\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\djenn\3D Objects\TioMerKadoAPP\back-end\TioMerkado-Back-end\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\djenn\3D Objects\TioMerKadoAPP\back-end\TioMerkado-Back-end\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\djenn\3D Objects\TioMerKadoAPP\back-end\TioMerkado-Back-end\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\djenn\3D Objects\TioMerKadoAPP\back-end\TioMerkado-Back-end\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

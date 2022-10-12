@@ -31,6 +31,7 @@ namespace AplicationCore.Helpers
             IMapper mapper = mapperConfig.CreateMapper();
 
             services.AddSingleton(mapper);
+
         }
     }
 }
