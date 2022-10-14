@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using DomainService.Models;
 using DomainService.Models.Product;
+using Models.Product;
 
 namespace Infrastruture.Context
 {
@@ -13,6 +14,7 @@ namespace Infrastruture.Context
         public virtual DbSet<UserModel> Users { get; set; }
         public virtual DbSet<BrandModel> Brands { get; set; }
         public virtual DbSet<PCModel> Pcs { get; set; }
+        public virtual DbSet<ShoppingCartModel> ShoppingCart { get; set; }
     }
 
     public class DatabaseContextFactory : IDesignTimeDbContextFactory<DataBaseContext>

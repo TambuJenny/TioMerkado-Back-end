@@ -3,6 +3,7 @@ using System;
 using Infrastruture.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace sebastiao.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20221014094714_UpdateShoppingCart")]
+    partial class UpdateShoppingCart
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,7 +41,7 @@ namespace sebastiao.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brands", (string)null);
+                    b.ToTable("Brands");
                 });
 
             modelBuilder.Entity("DomainService.Models.Product.PCModel", b =>
@@ -96,7 +98,7 @@ namespace sebastiao.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Pcs", (string)null);
+                    b.ToTable("Pcs");
                 });
 
             modelBuilder.Entity("DomainService.Models.UserModel", b =>
@@ -134,7 +136,7 @@ namespace sebastiao.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Models.Product.ShoppingCartModel", b =>
@@ -167,7 +169,7 @@ namespace sebastiao.Migrations
 
                     b.HasIndex("UserIdId");
 
-                    b.ToTable("ShoppingCart", (string)null);
+                    b.ToTable("ShoppingCart");
                 });
 
             modelBuilder.Entity("DomainService.Models.Product.PCModel", b =>
