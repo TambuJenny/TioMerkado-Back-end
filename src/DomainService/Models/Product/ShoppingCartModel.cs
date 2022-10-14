@@ -10,7 +10,7 @@ namespace Models.Product
         public PCModel ProductId { get; set; }
         public SaleStatus Status { get; set; }
         public int Quantity { get; set; }
-        public UserModel UserId { get; set; }
+        public UserModel? UserId { get; set; }
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public DateTime ModifiedDate { get; set; } = DateTime.Now;

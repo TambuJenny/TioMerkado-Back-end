@@ -6,10 +6,10 @@ namespace DomainService.Interface.Product
     public interface ShoppingCartInterface
     {
         Task Create(ShoppingCartRequest body);
-        Task<List<ShoppingCartResponse>> GetAllUnsold();
-        Task<List<ShoppingCartResponse>> GetAllSold();
+        Task<IList<ShoppingCartResponse>> GetAllUnsold();
+        Task<IList<ShoppingCartResponse>> GetAllSold();
         Task Update(ShoppingCartRequest body);
-        Task Delete(Guid id);
+        Task Delete(Guid id, Guid userId);
         Task<ShoppingCartResponse> GetById(Guid id);
     }
 }

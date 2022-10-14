@@ -18,6 +18,7 @@ namespace AplicationCore.Helpers
             services.AddScoped<PCInterface, PcServices>();
             services.AddScoped<BrandInterface, BrandServices>();
             services.AddScoped<UserInterface, UserServices>();
+            services.AddScoped<ShoppingCartInterface, ShoppingCartServices>();
 
             //AutoMapper
             var mapperConfig = new MapperConfiguration(conf =>
