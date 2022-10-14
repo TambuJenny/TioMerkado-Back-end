@@ -7,7 +7,5 @@ namespace Models.Enum
         DesktopTower = 2,
         CPU = 3,
         Gabinet = 4,
-
-
     }
 }
