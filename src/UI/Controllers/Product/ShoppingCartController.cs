@@ -39,5 +39,32 @@ namespace UI.Controllers.Product
                 throw;
             }
         }
+
+        [HttpDelete("{shoppingCartId}")]
+
+         public async Task<ActionResult> Delete([FromRoute] Guid shoppingCartId, [FromHeader]Guid userId)
+        {
+            try
+            {
+                await _shoppingCartInterface.Delete(shoppingCartId,userId);
+                return Ok();
+            }
+            catch (NotImplementedException errorCreateshoppingCart)
+            {
+                switch (errorCreateshoppingCart.Message)
+                {
+                    case "Usuário não existe tentativa de fraude":
+                        return BadRequest(errorCreateshoppingCart.Message);
+                    case "Produto Já se encontra no carrinho":
+                        return BadRequest(errorCreateshoppingCart.Message);
+                    
+                    default:
+                        return BadRequest(errorCreateshoppingCart.Message);
+                }
+
+                throw;
+            }
+        }
+
     }
 }

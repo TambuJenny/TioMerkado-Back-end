@@ -1,4 +1,3 @@
-using System.Data.Entity;
 using AutoMapper;
 using DomaineService.Models.Request.Product;
 using DomaineService.Models.Response.Product;
@@ -7,6 +6,7 @@ using DomainService.Models.Enum;
 using Infrastruture.Context;
 using Models.Enum;
 using Models.Product;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApplicationCore.Services
 {
@@ -23,8 +23,6 @@ namespace ApplicationCore.Services
 
         public async Task Create(ShoppingCartRequest body)
         {
-            Guid userId = body.UserId;
-
             var existeProductInCart = await _dbContext.ShoppingCart
                 .Where(
                     x =>
@@ -32,35 +30,30 @@ namespace ApplicationCore.Services
                         && x.UserId.Id == body.UserId
                         && x.Status != SaleStatus.Sold
                 )
-                .FirstOrDefaultAsync();
+                .SingleOrDefaultAsync();
 
             var existeUser = _dbContext.Users
                 .Where(x => x.Id == body.UserId && x.Role == Roles.User_Simple)
-                .Any();
+                .FirstOrDefault();
 
-            if (!existeUser)
+            if (existeUser == null)
                 throw new NotImplementedException("Usuário não existe tentativa de fraude");
 
-            if (userId == null)
-            {
-                await _dbContext.ShoppingCart.AddAsync(
-                    new ShoppingCartModel
-                    {
-                        ProductId = existeProductInCart.ProductId,
-                        Quantity = body.Quantity,
-                        Status = SaleStatus.Cart,
-                    }
-                );
-                await _dbContext.SaveChangesAsync();
-            }
-            else if (existeUser)
-            {
-                if (existeProductInCart != null)
-                    throw new NotImplementedException("Produto Já se encontra no carrinho");
+            if (existeProductInCart != null)
+                throw new NotImplementedException("Produto Já se encontra no carrinho");
 
-                await _dbContext.ShoppingCart.AddAsync(_mapper.Map<ShoppingCartModel>(body));
-                await _dbContext.SaveChangesAsync();
-            }
+            await _dbContext.ShoppingCart.AddAsync(
+                new ShoppingCartModel
+                {
+                    ProductId = await _dbContext.Pcs
+                        .Where(x => x.Id == body.ProductId)
+                        .FirstOrDefaultAsync(),
+                    Quantity = body.Quantity,
+                    UserId = existeUser,
+                    Status = SaleStatus.Cart
+                }
+            );
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task Delete(Guid id, Guid userId)
