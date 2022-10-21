@@ -1,9 +1,11 @@
 using ApplicationCore.Services;
+using ApplicationCore.Services.Account;
 using ApplicationCore.Services.Product;
 using AutoMapper;
 using DomaineService.Models.Request.Product;
 using DomaineService.Models.Response.Product;
 using DomainService.Interface;
+using DomainService.Interface.Account;
 using DomainService.Interface.Product;
 using DomainService.Models;
 using DomainService.Models.Product;
@@ -19,6 +21,7 @@ namespace AplicationCore.Helpers
             services.AddScoped<BrandInterface, BrandServices>();
             services.AddScoped<UserInterface, UserServices>();
             services.AddScoped<ShoppingCartInterface, ShoppingCartServices>();
+            services.AddScoped<UserLoginInterface, UserLoginServices>();
 
             //AutoMapper
             var mapperConfig = new MapperConfiguration(conf =>

@@ -23,7 +23,7 @@ namespace ApplicationCore.Services
         {
             var existe = (
                 from u in _dbContext.Users
-                where u.Email == body.Email && body.PhoneNumber == u.PhoneNumber
+                where u.Email == body.Email || body.PhoneNumber == u.PhoneNumber
                 select u
             ).Any();
 
